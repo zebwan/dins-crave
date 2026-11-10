@@ -843,7 +843,12 @@
     if (PAGE !== 'contact') return;
     const form = $('#contact-form form');
     if (!form) return;
-    const dlg = dialogs()[0]; const m = dlg ? modal(dlg) : null;
+    const dlg = dialogs()[0];
+    if (dlg) { // lift the pop-up (and its backdrop) out of the section to page level, after the nav
+      const host = $('nav.fixed').parentElement, bd = dlg.previousElementSibling;
+      host.appendChild(bd); host.appendChild(dlg);
+    }
+    const m = dlg ? modal(dlg) : null;
     const email = $('input[name=email]', form), msgEl = $('textarea[name=message]', form);
     const submit = $('button[type=submit]', form);
     const errCls = 'absolute left-0 -bottom-[1.2vw] max-md:-bottom-[5vw] text-[0.8vw] max-md:text-[3vw] font-mouse-memoirs text-mustard uppercase tracking-wider animate-in fade-in slide-in-from-top-1';

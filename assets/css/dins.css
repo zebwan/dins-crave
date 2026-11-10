@@ -8,3 +8,8 @@ html.is-nav-enter:not(.is-nav-entering) [data-tr]::before {
   content: ""; position: absolute; inset: 0; background: #F2B01E; z-index: 1;
 }
 html.is-nav-enter:not(.is-nav-entering) [data-tr] > div { opacity: 1 !important; z-index: 2; }
+
+/* Contact page: the template stacks #contact-form at z-index 999, level with the fixed nav and later in the page,
+   so the nav (logo, Burgers, Menu) was hidden behind it at the top of the page. The section now stacks low and
+   dins.js moves its "message sent" pop-up to page level, where it layers like the checkout pop-up on the menu page. */
+#contact-form.z-999 { z-index: 1; }
