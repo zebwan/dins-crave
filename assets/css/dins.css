@@ -1,0 +1,10 @@
+/* Din's: additions on top of the template's own CSS (template.css). */
+
+/* Arriving from another page: the template keeps the transition curtains up across a client-side route change.
+   A static site reloads, so the new page starts fully covered (gold top curtain + "Craving...") until
+   dins.js has set the curtain paths and starts the enter animation. */
+html.is-nav-enter [aria-label="Page loading"] { display: none !important; }
+html.is-nav-enter:not(.is-nav-entering) [data-tr]::before {
+  content: ""; position: absolute; inset: 0; background: #F2B01E; z-index: 1;
+}
+html.is-nav-enter:not(.is-nav-entering) [data-tr] > div { opacity: 1 !important; z-index: 2; }
